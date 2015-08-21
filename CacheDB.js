@@ -74,7 +74,6 @@
 			return this.instance.db[key];
 		},
 		save: function() {
-			debugger;
 			this._persistence();
 		},
 		addCollection: function(collection) {
