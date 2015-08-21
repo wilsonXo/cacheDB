@@ -3,7 +3,9 @@
  * Simple database base on LocalStorage
  */
 
-define(function() {
+// define(function() {})
+
+(function(window, document, undefined) {
 
 	//define constructed
 	//argument 1 : table name
@@ -92,6 +94,7 @@ define(function() {
 
 		this._id = data._id || _._uuid();
 		this.data = {};
+
 		if (data._id) {
 			this.data = data.data
 		} else {
@@ -147,10 +150,12 @@ define(function() {
 			this._generateIndex();
 		},
 		//remove object from collection by locale id (auto generate)
-		cut: function(id) {},
+		cut: function(id) {
+			//TODO..
+		},
 		//remove object from collection by data index that in collection
 		removeAt: function(idx) {
-			// this.collection.splice()
+			//TODO..
 		},
 		remove: function(option) {
 			var self = this;
@@ -210,6 +215,12 @@ define(function() {
 		}
 	};
 
-	return _;
+	if (typeof define === 'function' && define.amd) {
+		define('cacheDB', function() {
+			return _;
+		})
+	} else {
+		window.cacheDB = _;
+	}
 
-})
+})(window, document);

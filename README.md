@@ -26,3 +26,17 @@ db.addCollection(collection);
 //commit the database to localStorage
 db.save()
 ```
+
+###Query
+```javascript
+db.getCollection('items').where({
+	name:"wilson"
+})
+```
+
+###remove
+```javascript
+db.getCollection('items').remove({
+	name:'wilson'
+});
+```
