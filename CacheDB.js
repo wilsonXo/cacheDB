@@ -3,8 +3,6 @@
  * Simple database base on LocalStorage
  */
 
-// define(function() {})
-
 (function(window, document, undefined) {
 
 	//define constructed
