@@ -162,6 +162,7 @@
 			for (var i = 0, len = tmp.length; i < len; i++) {
 				this.collection.splice(tmp[i], 1);
 			}
+			this._generateIndex();
 		},
 		each: function(handler) {
 			var self = this;
@@ -178,7 +179,7 @@
 			});
 			return ret;
 		},
-		where: function(conditions) {
+		where: function(conditions, first) {
 			var result = new DBCollection([], "$tmp_" + _._uuid());
 			if (conditions["_id"]) {
 				result.add(_._searchByIndex(conditions["_id"]));
@@ -193,9 +194,10 @@
 					}
 				}
 			}
-			return result;
+			return first ? result.collection[0] : result;
 		},
 		_generateIndex: function() {
+			this._index = {};
 			if (this.collection) {
 				for (var i = 0, len = this.collection.length; i < len; i++) {
 					var cur = this.collection[i];
